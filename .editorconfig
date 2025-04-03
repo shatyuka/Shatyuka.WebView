@@ -1,0 +1,18 @@
+[*.cs]
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+max_line_length = 180
+csharp_space_after_cast = false
+resharper_place_attribute_on_same_line = never
+resharper_sort_usings_with_system_first = false
+resharper_place_simple_method_on_single_line = false
+resharper_place_simple_blocks_on_single_line = false
+resharper_place_simple_embedded_block_on_same_line = false
+resharper_csharp_braces_for_ifelse = required
+
+[*.axaml]
+insert_final_newline = true
+resharper_space_before_self_closing = false
