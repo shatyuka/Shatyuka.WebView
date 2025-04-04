@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Windows", "Samples\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{9B82C19E-3C26-4814-AD86-7DE5F917B0F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shatyuka.WebView.Avalonia.Mac", "Shatyuka.WebView.Avalonia.Mac\Shatyuka.WebView.Avalonia.Mac.csproj", "{167E99B6-4A58-408B-BD01-43F0E77C4A5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Mac", "Samples\Sample.Mac\Sample.Mac.csproj", "{6210E897-3544-42F3-BB2E-3EBE6B8CBC38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +30,17 @@ Global
 		{5A61135B-6D3B-4C00-A617-D85C82FDFD26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A61135B-6D3B-4C00-A617-D85C82FDFD26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A61135B-6D3B-4C00-A617-D85C82FDFD26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167E99B6-4A58-408B-BD01-43F0E77C4A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167E99B6-4A58-408B-BD01-43F0E77C4A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167E99B6-4A58-408B-BD01-43F0E77C4A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167E99B6-4A58-408B-BD01-43F0E77C4A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6210E897-3544-42F3-BB2E-3EBE6B8CBC38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6210E897-3544-42F3-BB2E-3EBE6B8CBC38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6210E897-3544-42F3-BB2E-3EBE6B8CBC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6210E897-3544-42F3-BB2E-3EBE6B8CBC38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5A61135B-6D3B-4C00-A617-D85C82FDFD26} = {9B82C19E-3C26-4814-AD86-7DE5F917B0F6}
+		{6210E897-3544-42F3-BB2E-3EBE6B8CBC38} = {9B82C19E-3C26-4814-AD86-7DE5F917B0F6}
 	EndGlobalSection
 EndGlobal

@@ -26,11 +26,22 @@ public class WebView2Backend : WebViewBackend
     private async Task EnsureCoreWebView2Async()
     {
         _environment ??= await CoreWebView2Environment.CreateAsync();
-        _controller ??= await _environment.CreateCoreWebView2ControllerAsync(ControlHandle);
-        _controller.BoundsMode = CoreWebView2BoundsMode.UseRasterizationScale;
-        _controller.Bounds = new Rectangle((int)Bounds.X, (int)Bounds.Y, (int)Bounds.Width, (int)Bounds.Height);
+        if (_controller == null)
+        {
+            _controller = await _environment.CreateCoreWebView2ControllerAsync(ControlHandle);
+            _controller.BoundsMode = CoreWebView2BoundsMode.UseRasterizationScale;
+            SyncBounds();
 
-        _webView2 = _controller.CoreWebView2;
-        _webView2.Navigate("https://www.google.com/");
+            _webView2 = _controller.CoreWebView2;
+            _webView2.Navigate("https://www.google.com/");
+        }
+    }
+
+    private void SyncBounds()
+    {
+        if (_controller != null)
+        {
+            _controller.Bounds = new Rectangle((int)Bounds.X, (int)Bounds.Y, (int)Bounds.Width, (int)Bounds.Height);
+        }
     }
 }

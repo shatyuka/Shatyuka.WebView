@@ -4,6 +4,7 @@
     <option name="projectPerEditor">
       <map>
         <entry key="Sample.Windows/MainWindow.axaml" value="Sample.Windows/Sample.Windows.csproj" />
+        <entry key="Samples/Sample.Windows/MainWindow.axaml" value="Samples/Sample.Windows/Sample.Windows.csproj" />
       </map>
     </option>
   </component>
