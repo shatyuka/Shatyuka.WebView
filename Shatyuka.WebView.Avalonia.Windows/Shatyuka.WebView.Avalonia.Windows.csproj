@@ -4,6 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <IsAotCompatible>true</IsAotCompatible>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,5 +14,4 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3124.44"/>
     </ItemGroup>
-
 </Project>
