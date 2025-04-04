@@ -24,4 +24,9 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Shatyuka.WebView.Avalonia.Mac\Shatyuka.WebView.Avalonia.Mac.csproj"/>
     </ItemGroup>
+
+    <Target Name="CopyIcons" AfterTargets="Build">
+        <Copy SourceFiles="$(ProjectDir)/AppIcon.icns" DestinationFolder="$(TargetDir)/$(ProjectName).app/Contents/Resources"/>
+        <Copy SourceFiles="$(ProjectDir)/Assets.car" DestinationFolder="$(TargetDir)/$(ProjectName).app/Contents/Resources"/>
+    </Target>
 </Project>
