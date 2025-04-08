@@ -10,9 +10,7 @@ public partial class WebView : ContentPresenter
     {
         var provider = WebViewBackendProvider.BackendProviders.Find(provider => provider.Available());
         if (provider == null)
-        {
             throw new InvalidOperationException("Could not find available provider.");
-        }
 
         Backend = provider.Create();
         Content = Backend;

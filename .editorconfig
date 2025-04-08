@@ -8,10 +8,14 @@ max_line_length = 180
 csharp_space_after_cast = false
 resharper_place_attribute_on_same_line = never
 resharper_sort_usings_with_system_first = false
+resharper_braces_for_ifelse = required_for_multiline
 resharper_place_simple_method_on_single_line = false
 resharper_place_simple_blocks_on_single_line = false
+resharper_place_simple_accessorholder_on_single_line = false
 resharper_place_simple_embedded_block_on_same_line = false
-resharper_csharp_braces_for_ifelse = required
+resharper_place_simple_embedded_statement_on_same_line = false
+resharper_place_expr_property_on_single_line = true
+resharper_place_abstract_accessorholder_on_single_line = true
 
 [*.axaml]
 insert_final_newline = true

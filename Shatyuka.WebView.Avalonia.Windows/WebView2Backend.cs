@@ -14,10 +14,7 @@ public class WebView2Backend : WebViewBackend
 
     public WebView2Backend()
     {
-        BoundsProperty.Changed.AddClassHandler<Visual, Rect>((_, _) =>
-        {
-            SyncBounds();
-        });
+        BoundsProperty.Changed.AddClassHandler<Visual, Rect>((_, _) => SyncBounds());
     }
 
     protected override async void OnLoaded(RoutedEventArgs e)
@@ -43,7 +40,7 @@ public class WebView2Backend : WebViewBackend
 
             _webView2 = _controller.CoreWebView2;
 
-            _webView2.NavigationCompleted += (_, _) => { RaiseNavigationCompleted(); };
+            _webView2.NavigationCompleted += (_, _) => RaiseNavigationCompleted();
 
             RaiseBackendCreated();
         }
@@ -52,9 +49,7 @@ public class WebView2Backend : WebViewBackend
     protected override void SyncBounds()
     {
         if (_controller != null)
-        {
             _controller.Bounds = new Rectangle((int)Bounds.X, (int)Bounds.Y, (int)Bounds.Width, (int)Bounds.Height);
-        }
     }
 
     public override bool Navigate(Uri? uri)

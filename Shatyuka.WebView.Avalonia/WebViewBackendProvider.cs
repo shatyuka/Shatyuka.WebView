@@ -13,9 +13,7 @@ public static class WebViewBackendProvider
     {
         ArgumentNullException.ThrowIfNull(provider);
         if (BackendProviders.Any(exist => exist.GetType() == provider.GetType()))
-        {
             throw new ArgumentException($"Provider {provider.GetType()} is already registered.");
-        }
         BackendProviders.Add(provider);
     }
 }

@@ -38,9 +38,7 @@ public class WebKitBackend : WebViewBackend
         var userAgent = _webView.ValueForKey(new NSString("userAgent")).ToString();
         var webKitVersion = userAgent.Split(" ").FirstOrDefault(s => s.StartsWith("AppleWebKit/"));
         if (webKitVersion != null)
-        {
             _webView.CustomUserAgent = string.Concat(userAgent, " Safari/", webKitVersion.AsSpan("AppleWebKit/".Length));
-        }
 
         _webView.NavigationDelegate = new WebKitNavigationDelegate(this);
 
