@@ -1,15 +1,10 @@
-﻿using AppKit;
-using Avalonia.Interactivity;
+﻿using Avalonia.Interactivity;
 using Avalonia.Platform;
-using CoreGraphics;
-using Foundation;
-using System;
-using System.Linq;
 using WebKit;
 
 namespace Shatyuka.WebView.Avalonia.Mac;
 
-public class WebKitBackend : WebViewBackend
+internal class WebKitBackend : WebViewBackend
 {
     private WKWebView? _webView;
 
@@ -27,7 +22,15 @@ public class WebKitBackend : WebViewBackend
 
     protected override IPlatformHandle CreateNativeControlCore(IPlatformHandle parent)
     {
-        NSApplication.Init();
+        try
+        {
+            NSApplication.Init();
+        }
+        catch (InvalidOperationException)
+        {
+            // Ignore already initialized exception
+        }
+
         _webView = new WKWebView(CGRect.Empty, new WKWebViewConfiguration());
         var userAgent = _webView.ValueForKey(new NSString("userAgent")).ToString();
         var webKitVersion = userAgent.Split(" ").FirstOrDefault(s => s.StartsWith("AppleWebKit/"));
@@ -36,8 +39,8 @@ public class WebKitBackend : WebViewBackend
             _webView.CustomUserAgent = string.Concat(userAgent, " Safari/", webKitVersion.AsSpan("AppleWebKit/".Length));
         }
 
-        ControlHandle = _webView.Handle;
-        return new PlatformHandle(ControlHandle, "WebKit");
+        NativeControlHandle = _webView.Handle;
+        return new PlatformHandle(_webView.Handle, "WebKit");
     }
 
     private void SyncBounds()

@@ -1,4 +1,5 @@
 ﻿using Avalonia;
+using Shatyuka.WebView.Avalonia.Mac;
 using System;
 
 namespace Sample.Mac;
@@ -20,6 +21,7 @@ internal static class Program
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
+            .UseMacWebView()
             .LogToTrace();
     }
 }

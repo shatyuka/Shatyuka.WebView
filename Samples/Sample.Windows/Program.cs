@@ -1,4 +1,5 @@
 using Avalonia;
+using Shatyuka.WebView.Avalonia.Windows;
 using System;
 
 namespace Sample.Windows;
@@ -20,6 +21,7 @@ internal static class Program
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
+            .UseWindowsWebView()
             .LogToTrace();
     }
 }

@@ -2,9 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wv="clr-namespace:Shatyuka.WebView.Avalonia.Windows;assembly=Shatyuka.WebView.Avalonia.Windows"
+        xmlns:wv="clr-namespace:Shatyuka.WebView.Avalonia;assembly=Shatyuka.WebView.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Sample.Windows.MainWindow"
         Title="Sample.Windows" Width="800" Height="450">
-    <wv:WebView2Backend/>
+    <wv:WebView/>
 </Window>

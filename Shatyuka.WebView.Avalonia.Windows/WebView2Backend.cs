@@ -1,11 +1,10 @@
 using Avalonia.Interactivity;
-using Avalonia.Platform;
 using Microsoft.Web.WebView2.Core;
 using System.Drawing;
 
 namespace Shatyuka.WebView.Avalonia.Windows;
 
-public class WebView2Backend : WebViewBackend
+internal class WebView2Backend : WebViewBackend
 {
     private CoreWebView2Environment? _environment;
     private CoreWebView2Controller? _controller;
@@ -28,7 +27,7 @@ public class WebView2Backend : WebViewBackend
         _environment ??= await CoreWebView2Environment.CreateAsync();
         if (_controller == null)
         {
-            _controller = await _environment.CreateCoreWebView2ControllerAsync(ControlHandle);
+            _controller = await _environment.CreateCoreWebView2ControllerAsync(NativeControlHandle);
             _controller.BoundsMode = CoreWebView2BoundsMode.UseRasterizationScale;
             SyncBounds();
 

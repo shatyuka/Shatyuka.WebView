@@ -5,12 +5,12 @@ namespace Shatyuka.WebView.Avalonia;
 
 public class WebViewBackend : NativeControlHost
 {
-    protected nint ControlHandle;
+    protected nint NativeControlHandle;
 
     protected override IPlatformHandle CreateNativeControlCore(IPlatformHandle parent)
     {
         var platformHandle = base.CreateNativeControlCore(parent);
-        ControlHandle = platformHandle.Handle;
+        NativeControlHandle = platformHandle.Handle;
         return platformHandle;
     }
 }
