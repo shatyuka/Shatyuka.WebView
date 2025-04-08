@@ -3,8 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wv="clr-namespace:Shatyuka.WebView.Avalonia;assembly=Shatyuka.WebView.Avalonia"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
         x:Class="Sample.Mac.MainWindow"
-        Title="Sample.Mac" Width="800" Height="450">
-    <wv:WebView/>
+        Title="Sample.Mac" Width="800" Height="500" CanResize="True">
+    <wv:WebView Url="https://www.google.com" NavigationCompleted="WebView_OnNavigationCompleted"/>
 </Window>

@@ -1,18 +1,19 @@
-﻿using Avalonia.Interactivity;
+﻿using AppKit;
+using Avalonia.Interactivity;
 using Avalonia.Platform;
+using CoreGraphics;
+using Foundation;
+using System;
+using System.Linq;
 using WebKit;
 
 namespace Shatyuka.WebView.Avalonia.Mac;
 
-internal class WebKitBackend : WebViewBackend
+public class WebKitBackend : WebViewBackend
 {
-    private WKWebView? _webView;
+    public WKWebView? WebView => _webView;
 
-    protected override void OnLoaded(RoutedEventArgs e)
-    {
-        SyncBounds();
-        _webView?.LoadRequest(new NSUrlRequest(new NSUrl("https://www.google.com/")));
-    }
+    private WKWebView? _webView;
 
     protected override void OnUnloaded(RoutedEventArgs e)
     {
@@ -32,6 +33,8 @@ internal class WebKitBackend : WebViewBackend
         }
 
         _webView = new WKWebView(CGRect.Empty, new WKWebViewConfiguration());
+
+        // Pretend to be Safari
         var userAgent = _webView.ValueForKey(new NSString("userAgent")).ToString();
         var webKitVersion = userAgent.Split(" ").FirstOrDefault(s => s.StartsWith("AppleWebKit/"));
         if (webKitVersion != null)
@@ -39,15 +42,25 @@ internal class WebKitBackend : WebViewBackend
             _webView.CustomUserAgent = string.Concat(userAgent, " Safari/", webKitVersion.AsSpan("AppleWebKit/".Length));
         }
 
+        _webView.NavigationDelegate = new WebKitNavigationDelegate(this);
+
+        RaiseBackendCreated();
+
         NativeControlHandle = _webView.Handle;
         return new PlatformHandle(_webView.Handle, "WebKit");
     }
 
-    private void SyncBounds()
+    public override bool Navigate(Uri? uri)
     {
-        if (_webView != null)
-        {
-            _webView.Frame = new CGRect(0, 0, Bounds.Width, Bounds.Height);
-        }
+        if (_webView == null)
+            return false;
+        if (uri == null)
+            return false;
+        return _webView.LoadRequest(new NSUrlRequest(new NSUrl(uri.AbsoluteUri))) != null;
+    }
+
+    internal void RaiseWebKitNavigationCompleted()
+    {
+        RaiseNavigationCompleted();
     }
 }

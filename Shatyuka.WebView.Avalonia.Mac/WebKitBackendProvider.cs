@@ -1,3 +1,5 @@
+using System;
+
 namespace Shatyuka.WebView.Avalonia.Mac;
 
 internal class WebKitBackendProvider : IWebViewBackendProvider

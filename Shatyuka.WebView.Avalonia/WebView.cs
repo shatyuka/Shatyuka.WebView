@@ -1,9 +1,11 @@
-using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
 
 namespace Shatyuka.WebView.Avalonia;
 
-public class WebView : Border
+public partial class WebView : ContentPresenter
 {
+    public WebViewBackend Backend { get; }
+
     public WebView()
     {
         var provider = WebViewBackendProvider.BackendProviders.Find(provider => provider.Available());
@@ -12,7 +14,15 @@ public class WebView : Border
             throw new InvalidOperationException("Could not find available provider.");
         }
 
-        var backend = provider.Create();
-        Child = backend;
+        Backend = provider.Create();
+        Content = Backend;
+
+        RegisterPropertyChangedCallback();
+        RegisterEvents();
+    }
+
+    public bool Navigate(Uri? uri)
+    {
+        return Backend.Navigate(uri);
     }
 }
