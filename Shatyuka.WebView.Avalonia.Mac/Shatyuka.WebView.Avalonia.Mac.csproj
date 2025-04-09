@@ -1,10 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net9.0-macos</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsAotCompatible>true</IsAotCompatible>
+        <TargetPlatformIdentifier>macos</TargetPlatformIdentifier>
+        <TargetPlatformVersion>15.2</TargetPlatformVersion>
+        <MinimumRequiredVersion>12.0</MinimumRequiredVersion>
+        <NoWarn>NETSDK1086;MSB3785</NoWarn>
     </PropertyGroup>
+
+    <ItemGroup>
+        <SDKReference Include="Microsoft.macOS.Sdk" Condition="$([MSBuild]::IsOSPlatform('Windows'))"/>
+        <FrameworkReference Include="Microsoft.macOS"/>
+    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Shatyuka.WebView.Avalonia\Shatyuka.WebView.Avalonia.csproj"/>
