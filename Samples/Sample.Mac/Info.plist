@@ -4,8 +4,6 @@
     <dict>
         <key>CFBundleIdentifier</key>
         <string>com.shatyuka.webview.mac</string>
-        <key>CFBundleInfoDictionaryVersion</key>
-        <string>6.0</string>
         <key>CFBundleName</key>
         <string>WebView Sample</string>
         <key>CFBundleIconFile</key>

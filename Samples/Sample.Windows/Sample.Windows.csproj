@@ -8,6 +8,7 @@
         <ApplicationIcon>app.ico</ApplicationIcon>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <PublishAot>true</PublishAot>
+        <Version>1.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
