@@ -5,7 +5,6 @@
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-        <PublishAot>true</PublishAot>
         <Version>1.0</Version>
     </PropertyGroup>
 
