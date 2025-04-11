@@ -14,4 +14,12 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3124.44"/>
     </ItemGroup>
+
+    <Target Name="RemoveUnnecessaryWebView2References" AfterTargets="ResolvePackageDependenciesForBuild">
+        <ItemGroup>
+            <ReferenceToBeRemoved Include="@(Reference)" Condition="'%(Reference.FileName)' == 'Microsoft.Web.WebView2.WinForms'"/>
+            <ReferenceToBeRemoved Include="@(Reference)" Condition="'%(Reference.FileName)' == 'Microsoft.Web.WebView2.Wpf'"/>
+            <Reference Remove="@(ReferenceToBeRemoved)"/>
+        </ItemGroup>
+    </Target>
 </Project>

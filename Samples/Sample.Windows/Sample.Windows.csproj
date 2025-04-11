@@ -26,4 +26,12 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Shatyuka.WebView.Avalonia.Windows\Shatyuka.WebView.Avalonia.Windows.csproj"/>
     </ItemGroup>
+
+    <Target Name="RemoveUnnecessaryWebView2References" AfterTargets="ResolvePackageDependenciesForBuild">
+        <ItemGroup>
+            <ReferenceToBeRemoved Include="@(Reference)" Condition="'%(Reference.FileName)' == 'Microsoft.Web.WebView2.WinForms'"/>
+            <ReferenceToBeRemoved Include="@(Reference)" Condition="'%(Reference.FileName)' == 'Microsoft.Web.WebView2.Wpf'"/>
+            <Reference Remove="@(ReferenceToBeRemoved)"/>
+        </ItemGroup>
+    </Target>
 </Project>
