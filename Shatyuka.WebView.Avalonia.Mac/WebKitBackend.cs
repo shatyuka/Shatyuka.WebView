@@ -36,9 +36,22 @@ public class WebKitBackend : WebViewBackend
 
         // Pretend to be Safari
         var userAgent = _webView.ValueForKey(new NSString("userAgent")).ToString();
-        var webKitVersion = userAgent.Split(" ").FirstOrDefault(s => s.StartsWith("AppleWebKit/"));
-        if (webKitVersion != null)
-            _webView.CustomUserAgent = string.Concat(userAgent, " Safari/", webKitVersion.AsSpan("AppleWebKit/".Length));
+        if (userAgent != null)
+        {
+            var customUserAgent = userAgent;
+
+            // ReSharper disable once CanReplaceCastWithVariableType
+            var safariBundle = (NSBundle?)NSBundle.FromPath("/Applications/Safari.app");
+            var safariVersion = safariBundle?.InfoDictionary["CFBundleShortVersionString"];
+            if (safariVersion != null)
+                customUserAgent = string.Concat(customUserAgent, " Version/", safariVersion);
+
+            var webKitVersion = userAgent.Split(" ").FirstOrDefault(s => s.StartsWith("AppleWebKit/"));
+            if (webKitVersion != null)
+                customUserAgent = string.Concat(customUserAgent, " Safari/", webKitVersion.AsSpan("AppleWebKit/".Length));
+
+            _webView.CustomUserAgent = customUserAgent;
+        }
 
         _webView.NavigationDelegate = new WebKitNavigationDelegate(this);
 
