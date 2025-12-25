@@ -4,7 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TargetPlatformIdentifier>macos</TargetPlatformIdentifier>
-        <TargetPlatformVersion>26.1</TargetPlatformVersion>
+        <TargetPlatformVersion>26.2</TargetPlatformVersion>
         <MinimumRequiredVersion>12.0</MinimumRequiredVersion>
         <NoWarn>NETSDK1086;MSB3785</NoWarn>
     </PropertyGroup>
